@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class MiniGame1Slider : MonoBehaviour
 {
-    [SerializeField] Vector2 spacePushPower = new Vector2(0, 2);
+    Vector2 spacePushPower = Vector2.zero;
     Rigidbody2D rb2d;
     bool presed = false;
     private void Awake() {
         rb2d = GetComponent<Rigidbody2D>();
     }
-    void Start()
-    {
-        
-    }
-
     private void Update() {
         if(Input.GetKeyDown(KeyCode.Space)){presed = true;}
     }
@@ -24,5 +19,8 @@ public class MiniGame1Slider : MonoBehaviour
             presed = false;
             rb2d.AddForce(spacePushPower, ForceMode2D.Impulse);
         }
+    }
+    public void Init(float power){
+        spacePushPower = new Vector2(0, power);
     }
 }

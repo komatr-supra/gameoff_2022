@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MiniGame1PointToHit : MonoBehaviour
 {
-    [SerializeField] float changeSpeed = 0.05f;
-    [SerializeField] float minChangeTime = 0.5f;
-    [SerializeField] float maxChangeTime = 2f;
+    float changeSpeed = 0.05f;
+    float minChangeTime = 0.5f;
+    float maxChangeTime = 2f;
     Vector3 newTargetPosition;
     void Start()
     {
@@ -22,9 +22,14 @@ public class MiniGame1PointToHit : MonoBehaviour
     IEnumerator RandomizePosition(){
         while(true){
             //mew Y position
-            newTargetPosition = new Vector3(transform.position.x, Random.Range(transform.parent.transform.position.y-4.3f, transform.parent.transform.position.y+4.3f), 0);
+            newTargetPosition = new Vector3(transform.position.x, Random.Range(transform.parent.transform.position.y-5.5f, transform.parent.transform.position.y+9.4f), 0);
             //random time
             yield return new WaitForSeconds(Random.Range(minChangeTime, maxChangeTime));
         }
+    }
+    public void Init(float speed, float minChangeTime, float maxChangeTime){
+        changeSpeed = speed;
+        this.minChangeTime = minChangeTime;
+        this.maxChangeTime = maxChangeTime;
     }
 }
