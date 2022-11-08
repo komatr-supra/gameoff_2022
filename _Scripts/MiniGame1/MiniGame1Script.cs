@@ -6,8 +6,10 @@ using UnityEngine;
 
 public class MiniGame1Script : MonoBehaviour
 {
+    
     [Header("Customizable Variables")]
     [Space(15)]
+    [Header("Minigame")]
     [Header("Big slider")]
     [Range(0,20)]
     [SerializeField] float upPushForce = 2f;
@@ -32,7 +34,7 @@ public class MiniGame1Script : MonoBehaviour
     [Header("TEST")]
     [SerializeField] GameObject item;
     
-    string winner = "not set";
+    //string winner = "not set";
     bool gameEnded = false;
     public void StartFight(GameObject player)
     {
@@ -54,7 +56,7 @@ public class MiniGame1Script : MonoBehaviour
         point.Init(changeSpeed, minChangeTime, maxChangeTime);
     }
     void Update()
-    {
+    {        
         if(gameEnded){
             if(waitTime > 0){
                 waitTime -= Time.deltaTime;

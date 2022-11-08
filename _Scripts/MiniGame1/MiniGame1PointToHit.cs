@@ -22,7 +22,7 @@ public class MiniGame1PointToHit : MonoBehaviour
     IEnumerator RandomizePosition(){
         while(true){
             //mew Y position
-            newTargetPosition = new Vector3(transform.position.x, Random.Range(transform.parent.transform.position.y-4.3f, transform.parent.transform.position.y+4.3f), 0);
+            newTargetPosition = new Vector3(transform.position.x, Random.Range(transform.parent.transform.position.y-5.5f, transform.parent.transform.position.y+9.4f), 0);
             //random time
             yield return new WaitForSeconds(Random.Range(minChangeTime, maxChangeTime));
         }
