@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
+    [Header("Using physics, so breaking and moving speed must be set right and tuned!")]
     [SerializeField] float moveSpeed = 2f;
-    public bool canMove = true;
+    [SerializeField] float brakingSpeed = 5f;
+    [HideInInspector] public bool canMove = true;
     Vector2 moveDir = Vector2.zero;
     Vector2 lastMoveDir = Vector2.zero;
     bool isMoving;
@@ -17,7 +19,7 @@ public class Mover : MonoBehaviour
     }
     void Start()
     {
-        
+        rb2d.drag = brakingSpeed;
     }
 
     
@@ -40,7 +42,16 @@ public class Mover : MonoBehaviour
         animator.SetFloat("xValue", lastMoveDir.x);
         animator.SetFloat("yValue", lastMoveDir.y);
     }
-    private void FixedUpdate() {        
+    private void FixedUpdate() {
+        if(canMove)        
         rb2d.velocity = moveDir * moveSpeed;
+    }
+    public void DisableControl(float time){
+        if(!canMove) return;
+        canMove = false;
+        Invoke("EnableControl", time);
+    }
+    void EnableControl(){
+        canMove = true;
     }
 }

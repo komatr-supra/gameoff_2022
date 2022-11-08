@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MiniGame1PointToHit : MonoBehaviour
 {
-    [SerializeField] float changeSpeed = 0.05f;
-    [SerializeField] float minChangeTime = 0.5f;
-    [SerializeField] float maxChangeTime = 2f;
+    float changeSpeed = 0.05f;
+    float minChangeTime = 0.5f;
+    float maxChangeTime = 2f;
     Vector3 newTargetPosition;
     void Start()
     {
@@ -26,5 +26,10 @@ public class MiniGame1PointToHit : MonoBehaviour
             //random time
             yield return new WaitForSeconds(Random.Range(minChangeTime, maxChangeTime));
         }
+    }
+    public void Init(float speed, float minChangeTime, float maxChangeTime){
+        changeSpeed = speed;
+        this.minChangeTime = minChangeTime;
+        this.maxChangeTime = maxChangeTime;
     }
 }

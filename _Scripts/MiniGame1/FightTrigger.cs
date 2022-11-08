@@ -11,14 +11,9 @@ public class FightTrigger : MonoBehaviour
         Debug.Log("fight triggered");
         if(!wasTriggered && other.CompareTag("Player")){
             wasTriggered = true;
-            StartFight(other);
+            
         }
     }
 
-    private void StartFight(Collider2D playerColider)
-    {
-        miniGame1.transform.position = playerColider.transform.position;
-        playerColider.gameObject.GetComponent<Mover>().canMove = false;
-        miniGame1.SetActive(true);
-    }
+    
 }
